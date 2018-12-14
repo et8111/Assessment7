@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JordanPartyDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Dish">
+    <Key>
+      <PropertyRef Name="DishID" />
+    </Key>
+    <Property Name="DishID" Type="Int32" Nullable="false" />
+    <Property Name="PersonalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="DishName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DishDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Options" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="guestID" Type="Int32" />
+    <NavigationProperty Name="Guest" Relationship="Self.FK_Dish_Guest" FromRole="Dish" ToRole="Guest" />
+  </EntityType>
+  <EntityType Name="Guest">
+    <Key>
+      <PropertyRef Name="GuestId" />
+    </Key>
+    <Property Name="GuestId" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AttendanceDate" Type="DateTime" Precision="3" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Guest1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Dishes" Relationship="Self.FK_Dish_Guest" FromRole="Guest" ToRole="Dish" />
+  </EntityType>
+  <Association Name="FK_Dish_Guest">
+    <End Role="Guest" Type="Self.Guest" Multiplicity="0..1" />
+    <End Role="Dish" Type="Self.Dish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Guest">
+        <PropertyRef Name="GuestId" />
+      </Principal>
+      <Dependent Role="Dish">
+        <PropertyRef Name="guestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="JordanPartyDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Dishes" EntityType="Self.Dish" />
+    <EntitySet Name="Guests" EntityType="Self.Guest" />
+    <AssociationSet Name="FK_Dish_Guest" Association="Self.FK_Dish_Guest">
+      <End Role="Guest" EntitySet="Guests" />
+      <End Role="Dish" EntitySet="Dishes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

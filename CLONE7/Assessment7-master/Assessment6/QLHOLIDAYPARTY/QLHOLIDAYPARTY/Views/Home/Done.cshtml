@@ -1,0 +1,14 @@
+﻿@model QLHOLIDAYPARTY.Models.Guest
+@{
+    ViewBag.Title = "Done";
+}
+<h2>Done!</h2>
+<h3>Name: @Model.FirstName @Model.LastName</h3>
+<h3>Day: @Model.AttendanceDate</h3>
+<h3>Email: @Model.EmailAddress</h3>
+
+@if(!string.IsNullOrEmpty(Model.Guest1))
+{
+<h3>Guest Name: @Model.Guest1</h3>
+}
+

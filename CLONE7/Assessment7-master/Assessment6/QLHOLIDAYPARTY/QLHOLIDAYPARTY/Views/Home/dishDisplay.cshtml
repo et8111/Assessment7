@@ -1,0 +1,34 @@
+﻿@model QLHOLIDAYPARTY.Models.JordanPartyDbEntities
+@{
+    ViewBag.Title = "dishDisplay";
+    int n = 1;
+}
+
+<h2> Dishes</h2>
+
+<table class="table">
+    <tr>
+        <td>#</td>
+        <td>Person</td>
+        <td>Dish</td>
+        <td>Description</td>
+        <td>Options</td>
+        <td>Edit</td>
+        <td>Delete</td>
+    </tr>
+
+    @foreach (var v in Model.Dishes.ToList() )
+    {
+        <tr>
+            <td>@(n++)</td>
+            <td>@v.PersonalName</td>
+            <td>@v.DishName</td>
+            <td>@v.DishDescription</td>
+            <td>@v.Options</td>
+            <td><a href="/Home/DishEditor?id=@v.DishID">EDIT</a></td>
+            <td><a href="/Home/DELETEDISH?id=@v.DishID" >DELETE</a></td>
+        </tr>
+
+    }
+
+</table>

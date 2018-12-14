@@ -1,0 +1,37 @@
+﻿@model QLHOLIDAYPARTY.Models.JordanPartyDbEntities
+@{
+    ViewBag.Title = "GuestDispay";
+    int n = 1;
+    var temp = Model.Guests.Where(a => Model.Dishes.Any(b => b.PersonalName == (a.FirstName + " " + a.LastName))).ToList();
+}
+
+<h2> Dishes</h2>
+
+<table class="table">
+    <tr>
+        <td>#</td>
+        <td>FirstName</td>
+        <td>LastName</td>
+        <td>Attendence Day</td>
+        <td>EmalAddress</td>
+        <td>Guest</td>
+        <td>Dish?</td>
+        <td>Delete</td>
+    </tr>
+
+    @foreach (var v in Model.Guests.ToList())
+    {
+        <tr>
+            <td>@(n++)</td>
+            <td>@v.FirstName</td>
+            <td>@v.LastName</td>
+            <td>@v.AttendanceDate</td>
+            <td>@v.EmailAddress</td>
+            <td>@v.Guest1</td>
+            @if (temp.Any(a => a.FirstName == v.FirstName))
+            {<td>YES</td>}
+            else{<td>NO</td> }
+            <td><a href="/Home/DELETEGUEST?id=@v.GuestId">DELETE</a></td>
+        </tr>
+    }
+</table>
