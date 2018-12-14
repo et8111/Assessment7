@@ -20,31 +20,42 @@ namespace QLHOLIDAYPARTY.Controllers
 
         public ActionResult RSVP()
         {
-            return View(new Guest());
+            return View(new RegisterModel());
+        }
+
+        [HttpPost]
+        public ActionResult RSVP(RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var userManager = HttpContext.GetOwinContext().Get<UserManager<RegisterModel>>();
+                var id = UserManager.Create(new RegisterModel(model.g.EmailAddress), model.Password);
+                if (id.Succeeded)
+                {
+                    JordanPartyDbEntities p = new JordanPartyDbEntities();
+                    p.Guests.Add(model.g);
+                    p.SaveChanges();
+                    return RedirectToAction("Done", "Home", model);
+                }
+                ModelState.AddModelError("", id.Errors.FirstOrDefault());
+            }
+            ModelState.AddModelError("","Idiot");
+            return View(model);
         }
 
         public ActionResult Dish()
         {
             return View(new Dish());
         }
-
-        public ActionResult Done(Guest g)
+        public ActionResult Done()
         {
 
-            if (ModelState.IsValid)
-            {
-                var userManager = HttpContext.GetOwinContext().Get<UserManager<RegisterModel>>();
-                var id = UserManager.Create(new RegisterModel(g.EmailAddress));
-                if (id.Succeeded)
-                {
-                    return RedirectToAction("About", "Home");
-                }
-                ModelState.AddModelError("", id.Errors.FirstOrDefault());
-            }
-            JordanPartyDbEntities p = new JordanPartyDbEntities();
-            p.Guests.Add(g);
-            p.SaveChanges();
-            return View(g);
+            return View();
+        }
+        public ActionResult Done(RegisterModel model)
+        {
+
+            return View(model);
         }
         public ActionResult Done1(Dish d)
         {

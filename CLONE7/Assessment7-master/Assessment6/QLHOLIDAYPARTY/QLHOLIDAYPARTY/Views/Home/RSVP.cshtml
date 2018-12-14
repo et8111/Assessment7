@@ -1,4 +1,4 @@
-﻿@model QLHOLIDAYPARTY.Models.Guest
+﻿@model QLHOLIDAYPARTY.Models.RegisterModel
 @{
     ViewBag.Title = "RSVP";
 }
@@ -13,40 +13,57 @@
 
 <div style="margin-top: 50px">
     <h1>Register</h1>
-    <form class="form-horizontal" action="/Home/Done" method="post" name="theForm" onsubmit="return(validate());">
-        <div class="form-group">
-            <label class="control-label col-sm-2">Date:</label>
-            <div class="col-sm-10">
-            <input required class="form-control" type="date" name="AttendanceDate" id="AttendanceDate" max="2018-12-16" min="2018-12-15" onclick="dateCheck();" />
-                <div id="firstNameValidate" class="invalid-feedback"></div>
+    <form class="form-horizontal" action="/Home/RSVP" method="post" name="theForm" onsubmit="return(validate());">
+        @Html.ValidationSummary()
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Date:</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(v => v.g.AttendanceDate, new { @class = "form-control", type = "date", name = "AttendanceDate", id = "AttendanceDate", max = "2018-12-16", min = "2018-12-15", onclick = "dateCheck();" })
+                    <div id="firstNameValidate" class="invalid-feedback"></div>
+                </div>
             </div>
-        </div>
         <div id="div1">
             <div class="form-group">
                 <label class="control-label col-sm-2">First Name:</label>
                 <div class="col-sm-10">
-                    @Html.TextBoxFor(v => v.FirstName, new { required = "required", @class = "form-control", placeholder = "Enter First Name", name = "firstName" })
+                    @Html.TextBoxFor(v => v.g.FirstName, new { required = "required", @class = "form-control", placeholder = "Enter First Name", name = "firstName" })
                     <div id="firstNameValidate" class="invalid-feedback"></div>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">Last Name:</label>
                 <div class="col-sm-10">
-                    @Html.TextBoxFor(v => v.LastName, new { required = "required", @class = "form-control", placeholder = "Enter Last Name", name = "LastName" })
+                    @Html.TextBoxFor(v => v.g.LastName, new { required = "required", @class = "form-control", placeholder = "Enter Last Name", name = "LastName" })
                     <div id="lastNameValidate" class="invalid-feedback"></div>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">Email:</label>
                 <div class="col-sm-10">
-                    @Html.TextBoxFor(v => v.EmailAddress, new { required = "required", type = "email", @class = "form-control", placeholder = "Enter Email", name = "email" })
+                    @Html.TextBoxFor(v => v.g.EmailAddress, new { required = "required", type = "email", @class = "form-control", placeholder = "Enter Email", name = "email" })
                     <div id="emailNameValidate" class="invalid-feedback"></div>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">Plus One:</label>
                 <div class="col-sm-10">
-                    @Html.TextBoxFor(v => v.Guest1, new { @class = "form-control", placeholder = "Plus One Name", name = "plusOne" })
+                    @Html.TextBoxFor(v => v.g.Guest1, new { @class = "form-control", placeholder = "Plus One Name", name = "plusOne" })
+                    <div id="plusOneNameValidate" class="invalid-feedback"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Plus One:</label>
+                <div class="col-sm-10">
+                    @Html.PasswordFor(v => v.Password, new { @class = "form-control" })
+                    <div id="plusOneNameValidate" class="invalid-feedback"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Plus One:</label>
+                <div class="col-sm-10">
+                    @Html.PasswordFor(v => v.Password, new { @class = "form-control", name = "Pass2" })
+
                     <div id="plusOneNameValidate" class="invalid-feedback"></div>
                 </div>
             </div>

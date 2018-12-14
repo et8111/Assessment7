@@ -1,14 +1,14 @@
-﻿@model QLHOLIDAYPARTY.Models.Guest
+﻿@model QLHOLIDAYPARTY.Models.RegisterModel
 @{
     ViewBag.Title = "Done";
 }
 <h2>Done!</h2>
-<h3>Name: @Model.FirstName @Model.LastName</h3>
-<h3>Day: @Model.AttendanceDate</h3>
-<h3>Email: @Model.EmailAddress</h3>
+<h3>Name: @Model.g.FirstName @Model.g.LastName</h3>
+<h3>Day: @Model.g.AttendanceDate</h3>
+<h3>Email: @Model.g.EmailAddress</h3>
 
-@if(!string.IsNullOrEmpty(Model.Guest1))
+@if(!string.IsNullOrEmpty(Model.g.Guest1))
 {
-<h3>Guest Name: @Model.Guest1</h3>
+<h3>Guest Name: @Model.g.Guest1</h3>
 }
 
