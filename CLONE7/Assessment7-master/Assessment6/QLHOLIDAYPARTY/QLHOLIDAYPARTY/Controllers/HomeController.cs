@@ -35,7 +35,8 @@ namespace QLHOLIDAYPARTY.Controllers
                     JordanPartyDbEntities p = new JordanPartyDbEntities();
                     p.Guests.Add(model.g);
                     p.SaveChanges();
-                    return RedirectToAction("Done", "Home", model);
+                    TempData["1"] = model.g.EmailAddress;
+                    return RedirectToAction("Done", "Home");
                 }
                 ModelState.AddModelError("", id.Errors.FirstOrDefault());
             }
@@ -49,13 +50,17 @@ namespace QLHOLIDAYPARTY.Controllers
         }
         public ActionResult Done()
         {
+            string temp = TempData["1"].ToString();
+            JordanPartyDbEntities j = new JordanPartyDbEntities();
+            RegisterModel regi = new RegisterModel();
+            var tempGuest = j.Guests.Where(a => a.EmailAddress == temp).ToList();
 
-            return View();
-        }
-        public ActionResult Done(RegisterModel model)
-        {
-
-            return View(model);
+            regi.g.FirstName = tempGuest.FirstName;
+            regi.g.LastName = tempGuest.LastName;
+            regi.g.EmailAddress = tempGuest.EmailAddress;
+            regi.g.AttendanceDate = tempGuest.AttendanceDate;
+            regi.g.Guest1 = tempGuest.Guest1;
+            return View(regi);
         }
         public ActionResult Done1(Dish d)
         {

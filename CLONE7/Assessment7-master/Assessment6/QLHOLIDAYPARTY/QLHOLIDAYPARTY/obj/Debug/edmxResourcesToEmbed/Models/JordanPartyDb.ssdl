@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="DishID" />
     </Key>
-    <Property Name="DishID" Type="int" Nullable="false" />
+    <Property Name="DishID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PersonalName" Type="nvarchar" MaxLength="50" />
     <Property Name="PhoneNumber" Type="nvarchar" MaxLength="24" />
     <Property Name="DishName" Type="nvarchar" MaxLength="50" />
@@ -16,7 +16,7 @@
     <Key>
       <PropertyRef Name="GuestId" />
     </Key>
-    <Property Name="GuestId" Type="int" Nullable="false" />
+    <Property Name="GuestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
     <Property Name="LastName" Type="nvarchar" MaxLength="50" />
     <Property Name="AttendanceDate" Type="datetime" />

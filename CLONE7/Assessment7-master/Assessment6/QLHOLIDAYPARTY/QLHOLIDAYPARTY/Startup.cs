@@ -16,7 +16,7 @@ namespace QLHOLIDAYPARTY
     {
         public void Configuration(IAppBuilder app)
         {
-            const string connectionstring = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=JordanPartyDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            const string connectionstring = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=FTW4TQ2\LOCALDB#92E3ADDC;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             app.CreatePerOwinContext(() => new IdentityDbContext<RegisterModel>(connectionstring));
 
             app.CreatePerOwinContext<AppUserManager>(AppUserManager.Create);
