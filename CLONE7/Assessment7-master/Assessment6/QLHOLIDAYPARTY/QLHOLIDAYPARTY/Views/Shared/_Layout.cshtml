@@ -24,11 +24,21 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("RSVP", "RSVP", "Home")</li>
-                    <li>@Html.ActionLink("bring Dish", "Dish", "Home")</li>
-                    <li>@Html.ActionLink("Current Dishes", "dishDisplay", "Home")</li>
-                    <li>@Html.ActionLink("Guest List", "displayGuest", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("RSVP", "RSVP", "Home")</li>
+                        <li>@Html.ActionLink("bring Dish", "Dish", "Home")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("RSVP", "RSVP", "Home")</li>
+                        <li>@Html.ActionLink("bring Dish", "Dish", "Home")</li>
+                        <li>@Html.ActionLink("Current Dishes", "dishDisplay", "Home")</li>
+                        <li>@Html.ActionLink("Guest List", "displayGuest", "Home")</li>
+                    }
                 </ul>
             </div>
         </div>

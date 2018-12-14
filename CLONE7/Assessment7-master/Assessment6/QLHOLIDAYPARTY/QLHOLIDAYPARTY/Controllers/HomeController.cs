@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using QLHOLIDAYPARTY.Models;
 
 namespace QLHOLIDAYPARTY.Controllers
 {
     public class HomeController : Controller
     {
+        public UserManager<RegisterModel> UserManager => HttpContext.GetOwinContext().Get<UserManager<RegisterModel>>();
+
         public ActionResult Index()
         {
             return View();
@@ -26,6 +30,17 @@ namespace QLHOLIDAYPARTY.Controllers
 
         public ActionResult Done(Guest g)
         {
+
+            if (ModelState.IsValid)
+            {
+                var userManager = HttpContext.GetOwinContext().Get<UserManager<RegisterModel>>();
+                var id = UserManager.Create(new RegisterModel(g.EmailAddress));
+                if (id.Succeeded)
+                {
+                    return RedirectToAction("About", "Home");
+                }
+                ModelState.AddModelError("", id.Errors.FirstOrDefault());
+            }
             JordanPartyDbEntities p = new JordanPartyDbEntities();
             p.Guests.Add(g);
             p.SaveChanges();
@@ -62,7 +77,7 @@ namespace QLHOLIDAYPARTY.Controllers
             oldie.PersonalName = d.PersonalName;
             oldie.PhoneNumber = d.PhoneNumber;
 
-            p.Entry(oldie).State = System.Data.EntityState.Modified;
+            p.Entry(oldie).State = System.Data.Entity.EntityState.Modified;
             p.SaveChanges();
 
             return RedirectToAction("dishDisplay");
