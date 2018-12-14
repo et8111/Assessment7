@@ -2,18 +2,14 @@
 @{
     ViewBag.Title = "RSVP";
 }
-
 <h2>RSVP</h2>
-
 <script>
     $(document).ready(function () {
         document.getElementById("attendence").checked = false;
-    });
-</script>
-
+    });</script>
 <div style="margin-top: 50px">
     <h1>Register</h1>
-    <form class="form-horizontal" action="/Home/RSVP" method="post" name="theForm" onsubmit="return(validate());">
+    <form class="form-horizontal" action="/Identity/Registration" method="post" name="theForm" onsubmit="return(validate());">
         @Html.ValidationSummary()
 
         <div class="form-group">

@@ -11,37 +11,10 @@ namespace QLHOLIDAYPARTY.Controllers
 {
     public class HomeController : Controller
     {
-        public UserManager<RegisterModel> UserManager => HttpContext.GetOwinContext().Get<UserManager<RegisterModel>>();
 
         public ActionResult Index()
         {
             return View();
-        }
-
-        public ActionResult RSVP()
-        {
-            return View(new RegisterModel());
-        }
-
-        [HttpPost]
-        public ActionResult RSVP(RegisterModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var userManager = HttpContext.GetOwinContext().Get<UserManager<RegisterModel>>();
-                var id = UserManager.Create(new RegisterModel(model.g.EmailAddress), model.Password);
-                if (id.Succeeded)
-                {
-                    JordanPartyDbEntities p = new JordanPartyDbEntities();
-                    p.Guests.Add(model.g);
-                    p.SaveChanges();
-                    TempData["1"] = model.g.EmailAddress;
-                    return RedirectToAction("Done", "Home");
-                }
-                ModelState.AddModelError("", id.Errors.FirstOrDefault());
-            }
-            ModelState.AddModelError("","Idiot");
-            return View(model);
         }
 
         public ActionResult Dish()
@@ -53,13 +26,19 @@ namespace QLHOLIDAYPARTY.Controllers
             string temp = TempData["1"].ToString();
             JordanPartyDbEntities j = new JordanPartyDbEntities();
             RegisterModel regi = new RegisterModel();
-            var tempGuest = j.Guests.Where(a => a.EmailAddress == temp).ToList();
+            var tempGuest = j.Guests.ToList();
 
-            regi.g.FirstName = tempGuest.FirstName;
-            regi.g.LastName = tempGuest.LastName;
-            regi.g.EmailAddress = tempGuest.EmailAddress;
-            regi.g.AttendanceDate = tempGuest.AttendanceDate;
-            regi.g.Guest1 = tempGuest.Guest1;
+            foreach(var v in tempGuest)
+            {
+                if(v.EmailAddress == temp)
+                {
+                    regi.g.EmailAddress = v.EmailAddress;
+                    regi.g.FirstName = v.FirstName;
+                    regi.g.LastName = v.LastName;
+                    regi.g.AttendanceDate = v.AttendanceDate;
+                    regi.g.Guest1 = v.Guest1;
+                }
+            }
             return View(regi);
         }
         public ActionResult Done1(Dish d)
@@ -123,6 +102,16 @@ namespace QLHOLIDAYPARTY.Controllers
             p.SaveChanges();
 
             return RedirectToAction("displayGuest");
+        }
+
+        public ActionResult RSVP()
+        {
+            return View(new RegisterModel());
+        }
+
+        public string editer()
+        {
+            return ":(";
         }
     }
 }

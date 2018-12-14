@@ -2,6 +2,8 @@
     padding-top: 50px;
     padding-bottom: 20px;
     background-image: url("http://images6.fanpop.com/image/photos/40100000/Baby-Penguin-penguins-40120979-1024-768.jpg");
+    background-size: cover;
+    background-repeat: no-repeat
 }
 
 /* Set padding to keep content from hitting the edges */

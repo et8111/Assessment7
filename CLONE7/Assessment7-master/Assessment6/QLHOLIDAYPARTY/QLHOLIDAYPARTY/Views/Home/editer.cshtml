@@ -1,0 +1,51 @@
+﻿@model QLHOLIDAYPARTY.Models.Guest
+@{
+    ViewBag.Title = "RSVP";
+}
+<h2>RSVP</h2>
+<script>
+    $(document).ready(function () {
+        document.getElementById("attendence").checked = false;
+    });</script>
+<div style="margin-top: 50px">
+    <h1>Register</h1>
+    <form class="form-horizontal" action="/Home/editer" method="post" name="theForm" onsubmit="return(validate());">
+        @Html.ValidationSummary()
+        @Html.HiddenFor(a => a.GuestId)
+        <div class="form-group">
+            <label class="control-label col-sm-2">Date:</label>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(v => v.AttendanceDate, new {value=Model.AttendanceDate, @class = "form-control", type = "date", name = "AttendanceDate", id = "AttendanceDate", max = "2018-12-16", min = "2018-12-15", onclick = "dateCheck();" })
+                <div id="firstNameValidate" class="invalid-feedback"></div>
+            </div>
+        </div>
+        <div id="div1">
+            <div class="form-group">
+                <label class="control-label col-sm-2">First Name:</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(v => v.FirstName, new {value=Model.FirstName, required = "required", @class = "form-control", placeholder = "Enter First Name", name = "firstName" })
+                    <div id="firstNameValidate" class="invalid-feedback"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Last Name:</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(v => v.LastName, new {value = Model.LastName, required = "required", @class = "form-control", placeholder = "Enter Last Name", name = "LastName" })
+                    <div id="lastNameValidate" class="invalid-feedback"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Plus One:</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(v => v.Guest1, new {value = Model.Guest1, @class = "form-control", placeholder = "Plus One Name", name = "plusOne" })
+                    <div id="plusOneNameValidate" class="invalid-feedback"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button onclick="COMON();" id="subButton" type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

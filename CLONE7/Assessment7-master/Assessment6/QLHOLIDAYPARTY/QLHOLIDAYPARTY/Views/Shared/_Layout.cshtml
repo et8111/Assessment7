@@ -20,24 +20,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("WEBSITE", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                
+                @Html.ActionLink((User.Identity.IsAuthenticated) ? User.Identity.Name : "Welcome", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @if (User.Identity.IsAuthenticated)
+                    @if (!User.Identity.IsAuthenticated)
                     {
 
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("RSVP", "RSVP", "Home")</li>
-                        <li>@Html.ActionLink("bring Dish", "Dish", "Home")</li>
+                        <li>@Html.ActionLink("Register", "Registration", "Identity")</li>
+                        <li>@Html.ActionLink("Login", "Login", "Identity")</li>
                     }
                     else
                     {
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("RSVP", "RSVP", "Home")</li>
                         <li>@Html.ActionLink("bring Dish", "Dish", "Home")</li>
                         <li>@Html.ActionLink("Current Dishes", "dishDisplay", "Home")</li>
                         <li>@Html.ActionLink("Guest List", "displayGuest", "Home")</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Identity")</li>
                     }
                 </ul>
             </div>
