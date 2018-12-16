@@ -4,10 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ae832adb27c945a593df4d723e8ec2b4" Name="Diagram1" ZoomLevel="111">
-        <EntityTypeShape EntityType="JordanPartyDbModel.Dish" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="JordanPartyDbModel.Guest" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="JordanPartyDbModel.FK_Dish_Guest" ManuallyRouted="false" />
+      <Diagram DiagramId="1b98231e7018420b82c196b86fb54662" Name="Diagram1">
+        <EntityTypeShape EntityType="JordanPartyDbModel.Dish" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JordanPartyDbModel.Guest" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -5,10 +5,6 @@
     var temp1 = Model.Guests.GroupJoin(Model.Dishes, a => (a.FirstName + " " + a.LastName),
         b => b.PersonalName, (a, b) => new { a, b }).SelectMany(a => a.b.DefaultIfEmpty(), (x, c) => new { x.a, c.DishName }).ToList();
     var temp = Model.Dishes.ToList();
-    foreach(var v in temp)
-    {
-        <p>@v.Guest</p>
-    }
 }
 
 <h2> Dishes</h2>
@@ -34,8 +30,15 @@
             <td>@v.a.AttendanceDate</td>
             <td>@v.a.EmailAddress</td>
             <td>@v.a.Guest1</td>
+            @if (User.Identity.Name == v.a.EmailAddress)
+            {
             <td>@v.DishName</td>
             <td><a href="/Identity/deleteUser?id=@v.a.GuestId">DELETE</a></td>
+            }
+            else
+            {
+                <td></td><td></td>
+            }
         </tr>
     }
 </table>

@@ -11,7 +11,6 @@ namespace QLHOLIDAYPARTY.Controllers
 {
     public class HomeController : Controller
     {
-
         public ActionResult Index()
         {
             return View();
@@ -19,7 +18,14 @@ namespace QLHOLIDAYPARTY.Controllers
 
         public ActionResult Dish()
         {
-            return View(new Dish());
+            JordanPartyDbEntities j = new JordanPartyDbEntities();
+            RegisterModel model = new RegisterModel();
+            model.g = j.Guests.Find(User.Identity.Name);
+            var temp = j.Guests.ToList();
+            model.d = j.Dishes.ToList().FirstOrDefault(a => a.PersonalName == (model.g.FirstName + " " + model.g.LastName));
+            if (model.d == null)
+                model.d = new Dish();
+            return View(model);
         }
         public ActionResult Done()
         {
@@ -41,17 +47,25 @@ namespace QLHOLIDAYPARTY.Controllers
             }
             return View(regi);
         }
-        public ActionResult Done1(Dish d)
+        public ActionResult Done1()
         {
-            JordanPartyDbEntities p = new JordanPartyDbEntities();
-            p.Dishes.Add(d);
-            p.SaveChanges();
+            Dish d = (Dish)TempData["dish"];
             return View(d);
         }
 
         public ActionResult dishDisplay()
         {
-            return View(new JordanPartyDbEntities());
+            JordanPartyDbEntities j = new JordanPartyDbEntities();
+            RegisterModel model = new RegisterModel();
+            model.g = j.Guests.Find(User.Identity.Name);
+            model.d = j.Dishes.FirstOrDefault(a => a.PersonalName == (model.g.FirstName + " " + model.g.LastName));
+            if (model.d == null)
+            {
+                model.d = new Dish();
+                model.d.PersonalName = "No Dish";
+            }
+
+            return View(model);
         }
 
         public ActionResult dishEditor(int id)
@@ -74,8 +88,8 @@ namespace QLHOLIDAYPARTY.Controllers
 
             p.Entry(oldie).State = System.Data.Entity.EntityState.Modified;
             p.SaveChanges();
-
-            return RedirectToAction("dishDisplay");
+            TempData["dish"] = d;
+            return RedirectToAction("Done1", "Home");
         }
 
         public ActionResult DELETEDISH(int id)

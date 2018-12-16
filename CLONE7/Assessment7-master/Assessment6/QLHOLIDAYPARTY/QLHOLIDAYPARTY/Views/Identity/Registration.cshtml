@@ -15,7 +15,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2">Date:</label>
             <div class="col-sm-10">
-                @Html.TextBoxFor(v => v.g.AttendanceDate, new { @class = "form-control", type = "date", name = "AttendanceDate", id = "AttendanceDate", max = "2018-12-16", min = "2018-12-15", onclick = "dateCheck();" })
+                @Html.TextBoxFor(v => v.g.AttendanceDate, new {required="required", @class = "form-control", type = "date", name = "AttendanceDate", id = "AttendanceDate", max = "2018-12-16", min = "2018-12-15", onclick = "dateCheck();" })
                 <div id="firstNameValidate" class="invalid-feedback"></div>
             </div>
         </div>

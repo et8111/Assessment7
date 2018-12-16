@@ -173,7 +173,6 @@
     <Compile Include="Models\Guest.cs">
       <DependentUpon>JordanPartyDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\JordanPartyDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -189,6 +188,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>JordanPartyDb.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
