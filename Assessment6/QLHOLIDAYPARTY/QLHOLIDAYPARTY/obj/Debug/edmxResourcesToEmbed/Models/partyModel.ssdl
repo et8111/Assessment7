@@ -1,31 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="PartyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="Dish">
+<Schema Namespace="PartyDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="PartyDBModelStoreContainer">
+    <EntitySet Name="Dishes" EntityType="PartyDBModel.Store.Dishes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Guests" EntityType="PartyDBModel.Store.Guests" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Dish_Guest" Association="PartyDBModel.Store.FK_Dish_Guest">
+      <End Role="Guest" EntitySet="Guests" />
+      <End Role="Dish" EntitySet="Dishes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Dishes">
     <Key>
       <PropertyRef Name="DishID" />
     </Key>
     <Property Name="DishID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PersonName" Type="nvarchar" MaxLength="50" />
-    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="24" />
-    <Property Name="DishName" Type="nvarchar" MaxLength="50" />
-    <Property Name="DishDescription" Type="nvarchar" MaxLength="100" />
-    <Property Name="Options" Type="nvarchar" MaxLength="20" />
-    <Property Name="guestID" Type="int" />
+    <Property Name="PersonName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="nvarchar" Nullable="true" MaxLength="24" />
+    <Property Name="DishName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="DishDescription" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Options" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="guestID" Type="int" Nullable="true" />
   </EntityType>
-  <EntityType Name="Guest">
+  <EntityType Name="Guests">
     <Key>
       <PropertyRef Name="GuestID" />
     </Key>
     <Property Name="GuestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
-    <Property Name="AttendanceDate" Type="datetime" />
-    <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
-    <Property Name="Guest" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="AttendanceDate" Type="datetime" Nullable="true" />
+    <Property Name="EmailAddress" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Guest1" Type="nvarchar" Nullable="true" MaxLength="50" />
   </EntityType>
   <Association Name="FK_Dish_Guest">
-    <End Role="Guest" Type="Self.Guest" Multiplicity="0..1" />
-    <End Role="Dish" Type="Self.Dish" Multiplicity="*" />
+    <End Role="Guest" Type="PartyDBModel.Store.Guests" Multiplicity="0..1" />
+    <End Role="Dish" Type="PartyDBModel.Store.Dishes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Guest">
         <PropertyRef Name="GuestID" />
@@ -35,12 +43,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="PartyDBModelStoreContainer">
-    <EntitySet Name="Dish" EntityType="Self.Dish" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Guest" EntityType="Self.Guest" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Dish_Guest" Association="Self.FK_Dish_Guest">
-      <End Role="Guest" EntitySet="Guest" />
-      <End Role="Dish" EntitySet="Dish" />
-    </AssociationSet>
-  </EntityContainer>
 </Schema>

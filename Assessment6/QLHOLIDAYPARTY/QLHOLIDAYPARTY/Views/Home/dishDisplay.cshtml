@@ -1,4 +1,4 @@
-﻿@model QLHOLIDAYPARTY.Models.PartyDBEntities
+﻿@model QLHOLIDAYPARTY.Models.JordanPartyDbEntities1
 @{
     ViewBag.Title = "dishDisplay";
     int n = 1;
@@ -17,11 +17,11 @@
         <td>Delete</td>
     </tr>
 
-    @foreach (var v in Model.Dishes.ToList() )
+    @foreach (var v in Model.Dishes.ToList())
     {
         <tr>
             <td>@(n++)</td>
-            <td>@v.PersonName</td>
+            <td>@v.PersonalName</td>
             <td>@v.DishName</td>
             <td>@v.DishDescription</td>
             <td>@v.Options</td>

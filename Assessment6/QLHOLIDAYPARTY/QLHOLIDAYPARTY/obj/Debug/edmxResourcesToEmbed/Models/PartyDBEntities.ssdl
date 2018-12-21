@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JordanPartyDbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="JordanPartyDbModelStoreContainer">
+    <EntitySet Name="Dishes" EntityType="JordanPartyDbModel.Store.Dishes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Guests" EntityType="JordanPartyDbModel.Store.Guests" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Dishes">
+    <Key>
+      <PropertyRef Name="DishID" />
+    </Key>
+    <Property Name="DishID" Type="int" Nullable="false" />
+    <Property Name="PersonalName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="nvarchar" Nullable="true" MaxLength="24" />
+    <Property Name="DishName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="DishDescription" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Options" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="guestID" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Guests">
+    <Key>
+      <PropertyRef Name="GuestId" />
+    </Key>
+    <Property Name="GuestId" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="AttendanceDate" Type="datetime" Nullable="true" />
+    <Property Name="EmailAddress" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Guest1" Type="nvarchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+</Schema>
