@@ -4,14 +4,14 @@
     
 }
 <h1> Dishes</h1>
-@if (Model.d.PersonalName == "No Dish")
+@if (Model.d.PersonName == "No Dish")
 {
-    <h4>@Model.d.PersonalName :(</h4>
+    <h4>@Model.d.PersonName :(</h4>
 }
 else
 {
     <div class="form-group">
-        <h3>Name: @Model.d.PersonalName</h3>
+        <h3>Name: @Model.d.PersonName</h3>
         @if (!string.IsNullOrEmpty(Model.d.DishName))
         {
             <h3>Dish: @Model.d.DishName</h3>

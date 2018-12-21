@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PartyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Dish">
+    <Key>
+      <PropertyRef Name="DishID" />
+    </Key>
+    <Property Name="DishID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="DishName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DishDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Options" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="guestID" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="PartyDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Dishes" EntityType="Self.Dish" />
+    <EntitySet Name="mytables" EntityType="PartyDBModel.mytable" />
+    <EntitySet Name="Guests" EntityType="PartyDBModel.Guest" />
+  </EntityContainer>
+  <EntityType Name="mytable">
+    <Key>
+      <PropertyRef Name="url" />
+    </Key>
+    <Property Name="url" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="culture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="born" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="died" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="titles" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="aliases" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="father" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mother" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="spouse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="books" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tvSeries" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="playedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Guest">
+    <Key>
+      <PropertyRef Name="EmailAddress" />
+    </Key>
+    <Property Name="GuestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AttendanceDate" Type="DateTime" Precision="3" />
+    <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Guest1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GoTCharacter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

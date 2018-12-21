@@ -13,10 +13,10 @@ namespace QLHOLIDAYPARTY.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class JordanPartyDbEntities : DbContext
+    public partial class PartyDBEntities1 : DbContext
     {
-        public JordanPartyDbEntities()
-            : base("name=JordanPartyDbEntities")
+        public PartyDBEntities1()
+            : base("name=PartyDBEntities1")
         {
         }
     
@@ -26,6 +26,7 @@ namespace QLHOLIDAYPARTY.Models
         }
     
         public virtual DbSet<Dish> Dishes { get; set; }
+        public virtual DbSet<mytable> mytables { get; set; }
         public virtual DbSet<Guest> Guests { get; set; }
     }
 }

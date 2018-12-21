@@ -1,0 +1,89 @@
+﻿@model QLHOLIDAYPARTY.Models.GoT
+
+@{
+    ViewBag.Title = "info";
+}
+
+<h2>info</h2>
+
+<div>
+    <h4>GoT</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.culture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.culture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.born)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.born)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.died)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.died)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.father)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.father)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mother)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mother)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.spouse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.spouse)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index", "Home")
+</p>

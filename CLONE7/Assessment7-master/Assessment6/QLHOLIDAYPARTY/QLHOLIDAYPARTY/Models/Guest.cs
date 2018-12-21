@@ -14,11 +14,12 @@ namespace QLHOLIDAYPARTY.Models
     
     public partial class Guest
     {
-        public int GuestId { get; set; }
+        public int GuestID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Nullable<System.DateTime> AttendanceDate { get; set; }
         public string EmailAddress { get; set; }
         public string Guest1 { get; set; }
+        public string GoTCharacter { get; set; }
     }
 }

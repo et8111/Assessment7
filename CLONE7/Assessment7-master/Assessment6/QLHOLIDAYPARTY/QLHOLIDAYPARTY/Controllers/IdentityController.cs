@@ -30,7 +30,7 @@ namespace QLHOLIDAYPARTY.Controllers
                 var id = UserManager.Create(new RegisterModel(model.g.EmailAddress), model.Password);
                 if (id.Succeeded)
                 {
-                    JordanPartyDbEntities p = new JordanPartyDbEntities();
+                    PartyDBEntities1 p = new PartyDBEntities1();
                     p.Guests.Add(model.g);
                     p.SaveChanges();
                     TempData["1"] = model.g.EmailAddress;
@@ -38,7 +38,6 @@ namespace QLHOLIDAYPARTY.Controllers
                 }
                 ModelState.AddModelError("", id.Errors.FirstOrDefault());
             }
-            ModelState.AddModelError("", "Idiot");
             return View(model);
         }
 
@@ -73,10 +72,10 @@ namespace QLHOLIDAYPARTY.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public async Task<ActionResult> deleteUser(int id)
+        public async Task<ActionResult> deleteUser(string email)
         {
-            JordanPartyDbEntities shop = new JordanPartyDbEntities();
-            Guest dedPerson = shop.Guests.Find(id);
+            PartyDBEntities1 shop = new PartyDBEntities1();
+            Guest dedPerson = shop.Guests.Find(email);
             var userEmail = dedPerson.EmailAddress;
             if (userEmail == null)
             {
@@ -93,7 +92,6 @@ namespace QLHOLIDAYPARTY.Controllers
             //////////////////////////////////////////////////////
 
             shop.Guests.Remove(dedPerson);
-
             shop.SaveChanges();
             return RedirectToAction("Index", "Home");
         }

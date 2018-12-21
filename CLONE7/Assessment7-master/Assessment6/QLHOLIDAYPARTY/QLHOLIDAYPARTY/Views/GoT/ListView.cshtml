@@ -1,0 +1,14 @@
+﻿@model System.Collections.Generic.List<QLHOLIDAYPARTY.Models.GoT>
+@{
+    ViewBag.Title = "ListView";
+}
+
+<h2>ListView</h2>
+
+    <select class="form-control" id="idk" name="IDK">
+        <option>Select Character</option> 
+        @foreach (var v in Model)
+        {
+            <option>@v.name</option>
+        }
+    </select>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PartyDBModelStoreContainer" CdmEntityContainer="PartyDBEntities1">
+    <EntitySetMapping Name="Dishes">
+      <EntityTypeMapping TypeName="PartyDBModel.Dish">
+        <MappingFragment StoreEntitySet="Dish">
+          <ScalarProperty Name="DishID" ColumnName="DishID" />
+          <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="DishName" ColumnName="DishName" />
+          <ScalarProperty Name="DishDescription" ColumnName="DishDescription" />
+          <ScalarProperty Name="Options" ColumnName="Options" />
+          <ScalarProperty Name="guestID" ColumnName="guestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mytables">
+      <EntityTypeMapping TypeName="PartyDBModel.mytable">
+        <MappingFragment StoreEntitySet="mytable">
+          <ScalarProperty Name="playedBy" ColumnName="playedBy" />
+          <ScalarProperty Name="tvSeries" ColumnName="tvSeries" />
+          <ScalarProperty Name="books" ColumnName="books" />
+          <ScalarProperty Name="spouse" ColumnName="spouse" />
+          <ScalarProperty Name="mother" ColumnName="mother" />
+          <ScalarProperty Name="father" ColumnName="father" />
+          <ScalarProperty Name="aliases" ColumnName="aliases" />
+          <ScalarProperty Name="titles" ColumnName="titles" />
+          <ScalarProperty Name="died" ColumnName="died" />
+          <ScalarProperty Name="born" ColumnName="born" />
+          <ScalarProperty Name="culture" ColumnName="culture" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="url" ColumnName="url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Guests">
+      <EntityTypeMapping TypeName="PartyDBModel.Guest">
+        <MappingFragment StoreEntitySet="Guest">
+          <ScalarProperty Name="GoTCharacter" ColumnName="GoTCharacter" />
+          <ScalarProperty Name="Guest1" ColumnName="Guest" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="GuestID" ColumnName="GuestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

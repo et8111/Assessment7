@@ -13,16 +13,18 @@ namespace QLHOLIDAYPARTY.Controllers
     {
         public ActionResult Index()
         {
+            GoT g = new GoT();
+            g = g.CharacterTest(1);
             return View();
         }
 
         public ActionResult Dish()
         {
-            JordanPartyDbEntities j = new JordanPartyDbEntities();
+            PartyDBEntities1 j = new PartyDBEntities1();
             RegisterModel model = new RegisterModel();
             model.g = j.Guests.Find(User.Identity.Name);
             var temp = j.Guests.ToList();
-            model.d = j.Dishes.ToList().FirstOrDefault(a => a.PersonalName == (model.g.FirstName + " " + model.g.LastName));
+            model.d = j.Dishes.ToList().FirstOrDefault(a => a.PersonName == (model.g.FirstName + " " + model.g.LastName));
             if (model.d == null)
                 model.d = new Dish();
             return View(model);
@@ -30,7 +32,7 @@ namespace QLHOLIDAYPARTY.Controllers
         public ActionResult Done()
         {
             string temp = TempData["1"].ToString();
-            JordanPartyDbEntities j = new JordanPartyDbEntities();
+            PartyDBEntities1 j = new PartyDBEntities1();
             RegisterModel regi = new RegisterModel();
             var tempGuest = j.Guests.ToList();
 
@@ -55,14 +57,14 @@ namespace QLHOLIDAYPARTY.Controllers
 
         public ActionResult dishDisplay()
         {
-            JordanPartyDbEntities j = new JordanPartyDbEntities();
+            PartyDBEntities1 j = new PartyDBEntities1();
             RegisterModel model = new RegisterModel();
             model.g = j.Guests.Find(User.Identity.Name);
-            model.d = j.Dishes.FirstOrDefault(a => a.PersonalName == (model.g.FirstName + " " + model.g.LastName));
+            model.d = j.Dishes.FirstOrDefault(a => a.PersonName == (model.g.FirstName + " " + model.g.LastName));
             if (model.d == null)
             {
                 model.d = new Dish();
-                model.d.PersonalName = "No Dish";
+                model.d.PersonName = "No Dish";
             }
 
             return View(model);
@@ -70,7 +72,7 @@ namespace QLHOLIDAYPARTY.Controllers
 
         public ActionResult dishEditor(int id)
         {
-            JordanPartyDbEntities p = new JordanPartyDbEntities();
+            PartyDBEntities1 p = new PartyDBEntities1();
             Dish d = p.Dishes.Find(id);
 
             return View(d);
@@ -78,15 +80,21 @@ namespace QLHOLIDAYPARTY.Controllers
 
         public ActionResult dishSaver(Dish d)
         {
-            JordanPartyDbEntities p = new JordanPartyDbEntities();
+            PartyDBEntities1 p = new PartyDBEntities1();
             Dish oldie = p.Dishes.Find(d.DishID);
-            oldie.DishDescription = d.DishDescription;
-            oldie.DishName = d.DishName;
-            oldie.Options = d.Options;
-            oldie.PersonalName = d.PersonalName;
-            oldie.PhoneNumber = d.PhoneNumber;
-
-            p.Entry(oldie).State = System.Data.Entity.EntityState.Modified;
+            if (oldie == null)
+            {
+                p.Dishes.Add(d);
+            }
+            else
+            {
+                oldie.DishDescription = d.DishDescription;
+                oldie.DishName = d.DishName;
+                oldie.Options = d.Options;
+                oldie.PersonName = d.PersonName;
+                oldie.PhoneNumber = d.PhoneNumber;
+                p.Entry(oldie).State = System.Data.Entity.EntityState.Modified;
+            }
             p.SaveChanges();
             TempData["dish"] = d;
             return RedirectToAction("Done1", "Home");
@@ -94,7 +102,7 @@ namespace QLHOLIDAYPARTY.Controllers
 
         public ActionResult DELETEDISH(int id)
         {
-            JordanPartyDbEntities p = new JordanPartyDbEntities();
+            PartyDBEntities1 p = new PartyDBEntities1();
             Dish d = p.Dishes.Find(id);
 
             p.Dishes.Remove(d);
@@ -105,11 +113,28 @@ namespace QLHOLIDAYPARTY.Controllers
 
         public ActionResult displayGuest()
         {
-            return View(new JordanPartyDbEntities());
+            GoT temp = new GoT();
+            temp.partyDb = temp.Selector();
+            return View(temp);
         }
+
+        [HttpPost]
+        public ActionResult displayGuest(GoT g)
+        {
+            PartyDBEntities1 p = new PartyDBEntities1();
+            Guest old = p.Guests.Find(User.Identity.Name);
+            old.GoTCharacter = g.name;
+
+            p.Entry(old).State = System.Data.Entity.EntityState.Modified;
+            p.SaveChanges();
+            GoT temp = new GoT();
+            temp.partyDb = temp.Selector();
+            return View(temp);
+        }
+
         public ActionResult DELETEGUEST(int id)
         {
-            JordanPartyDbEntities p = new JordanPartyDbEntities();
+            PartyDBEntities1 p = new PartyDBEntities1();
             Guest d = p.Guests.Find(id);
 
             p.Guests.Remove(d);

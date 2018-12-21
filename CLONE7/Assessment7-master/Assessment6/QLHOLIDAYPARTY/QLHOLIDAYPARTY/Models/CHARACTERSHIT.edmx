@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PartyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dish">
+          <Key>
+            <PropertyRef Name="DishID" />
+          </Key>
+          <Property Name="DishID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="24" />
+          <Property Name="DishName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DishDescription" Type="nvarchar" MaxLength="100" />
+          <Property Name="Options" Type="nvarchar" MaxLength="20" />
+          <Property Name="guestID" Type="int" />
+        </EntityType>
+        <EntityType Name="Guest">
+          <Key>
+            <PropertyRef Name="EmailAddress" />
+          </Key>
+          <Property Name="GuestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AttendanceDate" Type="datetime" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Guest" Type="nvarchar" MaxLength="50" />
+          <Property Name="GoTCharacter" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="mytable">
+          <Key>
+            <PropertyRef Name="url" />
+          </Key>
+          <Property Name="url" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="culture" Type="nvarchar" MaxLength="50" />
+          <Property Name="born" Type="nvarchar" MaxLength="50" />
+          <Property Name="died" Type="nvarchar" MaxLength="50" />
+          <Property Name="titles" Type="nvarchar" MaxLength="50" />
+          <Property Name="aliases" Type="nvarchar" MaxLength="50" />
+          <Property Name="father" Type="nvarchar" MaxLength="50" />
+          <Property Name="mother" Type="nvarchar" MaxLength="50" />
+          <Property Name="spouse" Type="nvarchar" MaxLength="50" />
+          <Property Name="books" Type="nvarchar" MaxLength="50" />
+          <Property Name="tvSeries" Type="nvarchar" MaxLength="50" />
+          <Property Name="playedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="PartyDBModelStoreContainer">
+          <EntitySet Name="Dish" EntityType="Self.Dish" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guest" EntityType="Self.Guest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mytable" EntityType="Self.mytable" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PartyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Dish">
+          <Key>
+            <PropertyRef Name="DishID" />
+          </Key>
+          <Property Name="DishID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="DishName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DishDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Options" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="guestID" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="PartyDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dishes" EntityType="Self.Dish" />
+          <EntitySet Name="mytables" EntityType="PartyDBModel.mytable" />
+          <EntitySet Name="Guests" EntityType="PartyDBModel.Guest" />
+        </EntityContainer>
+        <EntityType Name="mytable">
+          <Key>
+            <PropertyRef Name="url" />
+          </Key>
+          <Property Name="url" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="culture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="born" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="died" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="titles" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="aliases" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="father" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mother" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="spouse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="books" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tvSeries" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="playedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Guest">
+          <Key>
+            <PropertyRef Name="EmailAddress" />
+          </Key>
+          <Property Name="GuestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AttendanceDate" Type="DateTime" Precision="3" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Guest1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GoTCharacter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PartyDBModelStoreContainer" CdmEntityContainer="PartyDBEntities1">
+          <EntitySetMapping Name="Dishes">
+            <EntityTypeMapping TypeName="PartyDBModel.Dish">
+              <MappingFragment StoreEntitySet="Dish">
+                <ScalarProperty Name="DishID" ColumnName="DishID" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="DishName" ColumnName="DishName" />
+                <ScalarProperty Name="DishDescription" ColumnName="DishDescription" />
+                <ScalarProperty Name="Options" ColumnName="Options" />
+                <ScalarProperty Name="guestID" ColumnName="guestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mytables">
+            <EntityTypeMapping TypeName="PartyDBModel.mytable">
+              <MappingFragment StoreEntitySet="mytable">
+                <ScalarProperty Name="playedBy" ColumnName="playedBy" />
+                <ScalarProperty Name="tvSeries" ColumnName="tvSeries" />
+                <ScalarProperty Name="books" ColumnName="books" />
+                <ScalarProperty Name="spouse" ColumnName="spouse" />
+                <ScalarProperty Name="mother" ColumnName="mother" />
+                <ScalarProperty Name="father" ColumnName="father" />
+                <ScalarProperty Name="aliases" ColumnName="aliases" />
+                <ScalarProperty Name="titles" ColumnName="titles" />
+                <ScalarProperty Name="died" ColumnName="died" />
+                <ScalarProperty Name="born" ColumnName="born" />
+                <ScalarProperty Name="culture" ColumnName="culture" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="url" ColumnName="url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guests">
+            <EntityTypeMapping TypeName="PartyDBModel.Guest">
+              <MappingFragment StoreEntitySet="Guest">
+                <ScalarProperty Name="GoTCharacter" ColumnName="GoTCharacter" />
+                <ScalarProperty Name="Guest1" ColumnName="Guest" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="GuestID" ColumnName="GuestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

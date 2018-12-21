@@ -15,7 +15,7 @@ namespace QLHOLIDAYPARTY.Models
     public partial class Dish
     {
         public int DishID { get; set; }
-        public string PersonalName { get; set; }
+        public string PersonName { get; set; }
         public string PhoneNumber { get; set; }
         public string DishName { get; set; }
         public string DishDescription { get; set; }

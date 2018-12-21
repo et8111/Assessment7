@@ -82,3 +82,12 @@ function validate1() {
     }
     return (true);
 }
+
+function GOTcheck() {
+    var e = document.getElementById("GoTCharacter");
+    var strUser = e.options[e.selectedIndex].value;
+    if (strUser == "Select Character")
+        return false;
+    else
+        return true;
+}

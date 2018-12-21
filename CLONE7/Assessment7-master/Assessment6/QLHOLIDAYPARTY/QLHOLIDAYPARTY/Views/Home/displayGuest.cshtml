@@ -1,44 +1,65 @@
-﻿@model QLHOLIDAYPARTY.Models.JordanPartyDbEntities
+﻿@model QLHOLIDAYPARTY.Models.GoT
 @{
     ViewBag.Title = "GuestDispay";
     int n = 1;
-    var temp1 = Model.Guests.GroupJoin(Model.Dishes, a => (a.FirstName + " " + a.LastName),
-        b => b.PersonalName, (a, b) => new { a, b }).SelectMany(a => a.b.DefaultIfEmpty(), (x, c) => new { x.a, c.DishName }).ToList();
-    var temp = Model.Dishes.ToList();
+    var temp1 = Model.partyDb.Guests.GroupJoin(Model.partyDb.Dishes, a => (a.FirstName + " " + a.LastName),
+        b => b.PersonName, (a, b) => new { a, b }).SelectMany(a => a.b.DefaultIfEmpty(), (x, c) => new { x.a, c.DishName }).ToList();
+    var temp = Model.partyDb.Dishes.ToList();
+    var gotList = new List<QLHOLIDAYPARTY.Models.GoT>();
+    gotList = Model.CharacterList();
 }
-
 <h2> Dishes</h2>
-
-<table class="table">
-    <tr>
-        <td>#</td>
-        <td>FirstName</td>
-        <td>LastName</td>
-        <td>Attendence Day</td>
-        <td>EmalAddress</td>
-        <td>Guest</td>
-        <td>Dish?</td>
-        <td>Delete</td>
-    </tr>
-
-    @foreach (var v in temp1)
-    {
+@using (Html.BeginForm())
+{
+    <table class="table">
         <tr>
-            <td>@(n++)</td>
-            <td>@v.a.FirstName</td>
-            <td>@v.a.LastName</td>
-            <td>@v.a.AttendanceDate</td>
-            <td>@v.a.EmailAddress</td>
-            <td>@v.a.Guest1</td>
-            @if (User.Identity.Name == v.a.EmailAddress)
-            {
-            <td>@v.DishName</td>
-            <td><a href="/Identity/deleteUser?id=@v.a.GuestId">DELETE</a></td>
-            }
-            else
-            {
-                <td></td><td></td>
-            }
+            <th>#</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Attendence Day</th>
+            <th>EmalAddress</th>
+            <th>Character:</th>
+            <th>Guest</th>
+            <th>Dish?</th>
+            <th>Delete</th>
         </tr>
-    }
-</table>
+        @foreach (var v in temp1)
+        {
+            <tr>
+                <td>@(n++)</td>
+                <td>@v.a.FirstName</td>
+                <td>@v.a.LastName</td>
+                <td>@v.a.AttendanceDate</td>
+                <td>@v.a.EmailAddress</td>
+                @if (@v.a.GoTCharacter == null && v.a.EmailAddress == User.Identity.Name)
+                {
+                    <td>
+                        <select required="required" class="form-control" id="name" name="name">
+                            <option>Select Character</option>
+                            @foreach (var v1 in gotList)
+                            {
+                                <option>@v1.name</option>
+                            }
+                        </select>
+                    </td>
+                }
+                else
+                {
+                    <td>@v.a.GoTCharacter <a href="/GoT/info?url=@v.a.GoTCharacter">| Details</a></td>
+                }
+                <td>@v.a.Guest1</td>
+                @if (User.Identity.Name == v.a.EmailAddress)
+                {
+                    <td>@v.DishName</td>
+                    <td><a href="/Identity/deleteUser?email=@v.a.EmailAddress">DELETE</a></td>
+                }
+                else
+                {
+                    <td></td>
+                    <td></td>
+                }
+            </tr>
+        }
+    </table>
+    <input type="submit" onclick="GOTcheck();" />
+}

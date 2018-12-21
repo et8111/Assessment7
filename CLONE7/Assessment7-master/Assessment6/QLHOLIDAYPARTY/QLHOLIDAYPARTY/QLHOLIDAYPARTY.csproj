@@ -161,32 +161,37 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\GoTController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IdentityController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AppUserManager.cs" />
+    <Compile Include="Models\CHARACTERSHIT.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CHARACTERSHIT.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CHARACTERSHIT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CHARACTERSHIT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CHARACTERSHIT.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CHARACTERSHIT.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CharacterTempModel.cs" />
     <Compile Include="Models\Dish.cs">
-      <DependentUpon>JordanPartyDb.tt</DependentUpon>
+      <DependentUpon>CHARACTERSHIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Guest.cs">
-      <DependentUpon>JordanPartyDb.tt</DependentUpon>
+      <DependentUpon>CHARACTERSHIT.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\JordanPartyDb.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JordanPartyDb.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\JordanPartyDb.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JordanPartyDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\JordanPartyDb.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JordanPartyDb.edmx</DependentUpon>
+    <Compile Include="Models\mytable.cs">
+      <DependentUpon>CHARACTERSHIT.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -201,24 +206,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\JordanPartyDb.Context.tt">
+    <Content Include="Models\CHARACTERSHIT.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JordanPartyDb.edmx</DependentUpon>
-      <LastGenOutput>JordanPartyDb.Context.cs</LastGenOutput>
+      <DependentUpon>CHARACTERSHIT.edmx</DependentUpon>
+      <LastGenOutput>CHARACTERSHIT.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\JordanPartyDb.tt">
+    <Content Include="Models\CHARACTERSHIT.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JordanPartyDb.edmx</DependentUpon>
-      <LastGenOutput>JordanPartyDb.cs</LastGenOutput>
+      <DependentUpon>CHARACTERSHIT.edmx</DependentUpon>
+      <LastGenOutput>CHARACTERSHIT.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\JordanPartyDb.edmx">
+    <EntityDeploy Include="Models\CHARACTERSHIT.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>JordanPartyDb.Designer.cs</LastGenOutput>
+      <LastGenOutput>CHARACTERSHIT.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\JordanPartyDb.edmx.diagram">
-      <DependentUpon>JordanPartyDb.edmx</DependentUpon>
+    <Content Include="Models\CHARACTERSHIT.edmx.diagram">
+      <DependentUpon>CHARACTERSHIT.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\JAVA.js" />
@@ -254,9 +259,12 @@
     <Content Include="Views\Identity\Login.cshtml" />
     <Content Include="Views\Home\Done.cshtml" />
     <Content Include="Views\Home\editer.cshtml" />
+    <Content Include="Views\GoT\ListView.cshtml" />
+    <Content Include="Views\GoT\info.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
