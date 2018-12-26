@@ -51,9 +51,9 @@ namespace QLHOLIDAYPARTY.Models
             return null;
         }
 
-        public GoT CharacterTest2(string item)
+        public static List<GoT> CharacterTest2(int item)
         {
-            HttpWebRequest request = WebRequest.CreateHttp(item);
+            HttpWebRequest request = WebRequest.CreateHttp($"https://www.anapioficeandfire.com/api/characters?page="+ item+"&pageSize=10");
             request.UserAgent = useragent;
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             if (response.StatusCode == HttpStatusCode.OK)
@@ -62,8 +62,8 @@ namespace QLHOLIDAYPARTY.Models
                 if (data == "null")
                     return null;
                 string data1 = data.Substring(1, data.Length - 2);
-                JObject dataObject = JObject.Parse(data);
-                var mTemp = dataObject.ToObject<GoT>();
+                JArray dataObject = JArray.Parse(data);
+                var mTemp = dataObject.ToObject<List<GoT>>();
                 return mTemp;
             }
             return null;
@@ -83,13 +83,13 @@ namespace QLHOLIDAYPARTY.Models
                 g.mother = v.mother;
                 g.name = v.name;
                 g.culture = v.culture;
-                g.aliases = null;
+                g.aliases = v.aliases.Split( ' ');
                 g.died = v.died;
-                g.playedBy = null;
+                g.playedBy = v.playedBy.Split(' ');
                 g.gender = v.gender;
                 g.spouse = g.spouse;
-                g.titles = null;
-                g.tvSeries = null;
+                g.titles = v.titles.Split(' ');
+                g.tvSeries =v.tvSeries.Split(' ');
                 list.Add(g);
                 g = new GoT();
             }
@@ -99,6 +99,28 @@ namespace QLHOLIDAYPARTY.Models
         public PartyDBEntities1 Selector()
         {
             return new PartyDBEntities1();
+        }
+
+        public static mytable GoTToMytable(GoT g)
+        {
+            var m = new mytable
+            {
+                name = g.name,
+                aliases = string.Join(" ", g.aliases),
+                playedBy = string.Join(" ", g.playedBy),
+                titles = string.Join(" ", g.titles),
+                tvSeries = string.Join(" ", g.tvSeries),
+                url = g.url,
+                books = string.Join(" ", g.books),
+                born = g.born,
+                culture = g.culture,
+                died = g.died,
+                father = g.father,
+                gender = g.gender,
+                mother = g.mother,
+                spouse = string.Join(" ", g.spouse)
+            };
+            return m;
         }
     }
 }

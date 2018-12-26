@@ -13,13 +13,16 @@ namespace QLHOLIDAYPARTY.Models
             g = new Guest();
             d = new Dish();
         }
+
         public RegisterModel(string userName)
         {
             UserName = userName;
             g = new Guest();
             d = new Dish();
         }
+
         public Dish d { get; set; }
         public Guest g { get; set; }
-        public string Password {get; set;}
+        public string Password { get; set; }
+    }
 }

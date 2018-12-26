@@ -13,8 +13,19 @@ namespace QLHOLIDAYPARTY.Controllers
     {
         public ActionResult Index()
         {
-            var g = new GoT();
-            g = g.CharacterTest(1);
+            GoT g = new GoT();
+            g = g.CharacterTest(583);
+            //Grab ALL characters
+            //var g = new List<GoT>();
+            //for(int i = 1; i < 215; i++)
+            //{ 
+            //    g.AddRange(GoT.CharacterTest2(i));
+
+            //}
+            //PartyDBEntities1 p = new PartyDBEntities1();
+            //foreach (var v in g)
+            //    p.mytables.Add(GoT.GoTToMytable(v));
+            //p.SaveChanges();
             return View();
         }
 

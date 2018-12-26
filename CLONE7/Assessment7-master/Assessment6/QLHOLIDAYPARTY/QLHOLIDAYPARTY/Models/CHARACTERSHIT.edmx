@@ -35,19 +35,19 @@
             <PropertyRef Name="url" />
           </Key>
           <Property Name="url" Type="nvarchar" MaxLength="70" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar(max)" />
           <Property Name="gender" Type="nvarchar" MaxLength="50" />
-          <Property Name="culture" Type="nvarchar" MaxLength="50" />
-          <Property Name="born" Type="nvarchar" MaxLength="50" />
-          <Property Name="died" Type="nvarchar" MaxLength="50" />
-          <Property Name="titles" Type="nvarchar" MaxLength="50" />
-          <Property Name="aliases" Type="nvarchar" MaxLength="50" />
-          <Property Name="father" Type="nvarchar" MaxLength="50" />
-          <Property Name="mother" Type="nvarchar" MaxLength="50" />
-          <Property Name="spouse" Type="nvarchar" MaxLength="50" />
-          <Property Name="books" Type="nvarchar" MaxLength="50" />
-          <Property Name="tvSeries" Type="nvarchar" MaxLength="50" />
-          <Property Name="playedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="culture" Type="nvarchar(max)" />
+          <Property Name="born" Type="nvarchar(max)" />
+          <Property Name="died" Type="nvarchar(max)" />
+          <Property Name="titles" Type="nvarchar(max)" />
+          <Property Name="aliases" Type="nvarchar(max)" />
+          <Property Name="father" Type="nvarchar(max)" />
+          <Property Name="mother" Type="nvarchar(max)" />
+          <Property Name="spouse" Type="nvarchar(max)" />
+          <Property Name="books" Type="nvarchar(max)" />
+          <Property Name="tvSeries" Type="nvarchar(max)" />
+          <Property Name="playedBy" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityContainer Name="PartyDBModelStoreContainer">
           <EntitySet Name="Dish" EntityType="Self.Dish" Schema="dbo" store:Type="Tables" />
@@ -80,19 +80,19 @@
             <PropertyRef Name="url" />
           </Key>
           <Property Name="url" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="culture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="born" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="died" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="titles" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="aliases" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="father" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="mother" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="spouse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="books" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="tvSeries" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="playedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="culture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="born" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="died" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="titles" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="aliases" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="father" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mother" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="spouse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="books" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tvSeries" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="playedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Guest">
           <Key>

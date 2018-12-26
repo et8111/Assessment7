@@ -22,19 +22,19 @@
       <PropertyRef Name="url" />
     </Key>
     <Property Name="url" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="culture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="born" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="died" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="titles" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="aliases" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="father" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="mother" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="spouse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="books" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="tvSeries" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="playedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="culture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="born" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="died" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="titles" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="aliases" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="father" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="mother" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="spouse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="books" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tvSeries" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="playedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Guest">
     <Key>
