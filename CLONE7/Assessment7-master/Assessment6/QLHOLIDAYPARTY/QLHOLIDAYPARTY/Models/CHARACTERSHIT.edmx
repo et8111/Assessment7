@@ -28,6 +28,7 @@
           <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Guest" Type="nvarchar" MaxLength="50" />
           <Property Name="GoTCharacter" Type="nvarchar" MaxLength="50" />
+          <Property Name="url" Type="nvarchar" MaxLength="70" />
         </EntityType>
         <EntityType Name="mytable">
           <Key>
@@ -104,6 +105,7 @@
           <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Guest1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="GoTCharacter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -147,6 +149,7 @@
           <EntitySetMapping Name="Guests">
             <EntityTypeMapping TypeName="PartyDBModel.Guest">
               <MappingFragment StoreEntitySet="Guest">
+                <ScalarProperty Name="url" ColumnName="url" />
                 <ScalarProperty Name="GoTCharacter" ColumnName="GoTCharacter" />
                 <ScalarProperty Name="Guest1" ColumnName="Guest" />
                 <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />

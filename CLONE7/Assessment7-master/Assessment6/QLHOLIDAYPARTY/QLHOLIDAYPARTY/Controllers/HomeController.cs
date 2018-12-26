@@ -13,19 +13,19 @@ namespace QLHOLIDAYPARTY.Controllers
     {
         public ActionResult Index()
         {
-            GoT g = new GoT();
+            var g = new GoT();
             g = g.CharacterTest(1);
             return View();
         }
 
         public ActionResult Dish()
         {
-            PartyDBEntities1 j = new PartyDBEntities1();
-            RegisterModel model = new RegisterModel();
+            var j = new PartyDBEntities1();
+            var model = new RegisterModel();
             model.g = j.Guests.Find(User.Identity.Name);
             var temp = j.Guests.ToList();
             model.d = j.Dishes.ToList().FirstOrDefault(a => a.PersonName == (model.g.FirstName + " " + model.g.LastName));
-            if (model.d == null)
+            if(model.d == null)
                 model.d = new Dish();
             return View(model);
         }
@@ -35,7 +35,6 @@ namespace QLHOLIDAYPARTY.Controllers
             PartyDBEntities1 j = new PartyDBEntities1();
             RegisterModel regi = new RegisterModel();
             var tempGuest = j.Guests.ToList();
-
             foreach(var v in tempGuest)
             {
                 if(v.EmailAddress == temp)
@@ -123,8 +122,9 @@ namespace QLHOLIDAYPARTY.Controllers
         {
             PartyDBEntities1 p = new PartyDBEntities1();
             Guest old = p.Guests.Find(User.Identity.Name);
-            old.GoTCharacter = g.name;
-
+            GoT got = new GoT();
+            old.GoTCharacter = got.CharacterList().Where(a => a.url == g.url).Select(b => b.name).FirstOrDefault();
+            old.url = g.url;
             p.Entry(old).State = System.Data.Entity.EntityState.Modified;
             p.SaveChanges();
             GoT temp = new GoT();

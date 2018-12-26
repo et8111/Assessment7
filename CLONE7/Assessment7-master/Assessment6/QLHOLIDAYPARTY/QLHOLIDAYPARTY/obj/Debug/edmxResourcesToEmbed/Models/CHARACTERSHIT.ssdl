@@ -23,6 +23,7 @@
     <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Guest" Type="nvarchar" MaxLength="50" />
     <Property Name="GoTCharacter" Type="nvarchar" MaxLength="50" />
+    <Property Name="url" Type="nvarchar" MaxLength="70" />
   </EntityType>
   <EntityType Name="mytable">
     <Key>

@@ -22,5 +22,4 @@ namespace QLHOLIDAYPARTY.Models
         public Dish d { get; set; }
         public Guest g { get; set; }
         public string Password {get; set;}
-    }
 }

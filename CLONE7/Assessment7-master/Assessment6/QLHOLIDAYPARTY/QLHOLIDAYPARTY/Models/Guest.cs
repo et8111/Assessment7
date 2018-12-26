@@ -21,5 +21,6 @@ namespace QLHOLIDAYPARTY.Models
         public string EmailAddress { get; set; }
         public string Guest1 { get; set; }
         public string GoTCharacter { get; set; }
+        public string url { get; set; }
     }
 }

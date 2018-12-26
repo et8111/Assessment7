@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -11,6 +12,7 @@ namespace QLHOLIDAYPARTY.Models
 
     public class GoT
     {
+        [Key]
         public string url { get; set; }
         public string name { get; set; }
         public string gender { get; set; }
@@ -73,20 +75,19 @@ namespace QLHOLIDAYPARTY.Models
             PartyDBEntities1 e = new PartyDBEntities1();
             List<GoT> list = new List<GoT>();
             GoT g = new GoT();
-            foreach (var v in e.mytables.ToList())
+            foreach (var v in e.mytables.Distinct().ToList())
             {
                 g.url = v.url;
                 g.born = v.born;
-                g.born = null;
                 g.father = v.father;
                 g.mother = v.mother;
                 g.name = v.name;
                 g.culture = v.culture;
                 g.aliases = null;
-                g.died = null;
+                g.died = v.died;
                 g.playedBy = null;
-                g.gender = null;
-                g.spouse = null;
+                g.gender = v.gender;
+                g.spouse = g.spouse;
                 g.titles = null;
                 g.tvSeries = null;
                 list.Add(g);

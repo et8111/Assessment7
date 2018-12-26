@@ -1,10 +1,4 @@
-﻿$(document).ready(function () {
-    function RSVPlink() {
-        window.location.replace("~/View/Home/RSVP");
-    }
-});
-
-function COMON() {
+﻿function COMON() {
     if (document.getElementById("AttendanceDate").value == "" || document.getElementById("AttendanceDate").value == null ) {
         document.getElementById("AttendanceDate").focus();
         alert("date Sucks");
@@ -12,7 +6,7 @@ function COMON() {
 }
 
 function check() {
-    if (document.getElementById("attendence").checked == false)
+    if (document.getElementById("Attendance").checked == false)
         $("#div2").slideUp();
     else
         $("#div2").slideDown();

@@ -1,12 +1,13 @@
 ﻿@model QLHOLIDAYPARTY.Models.GoT
 @{
-    ViewBag.Title = "GuestDispay";
-    int n = 1;
+    ViewBag.Title = "Guest Display";
+    var n = 1;
     var temp1 = Model.partyDb.Guests.GroupJoin(Model.partyDb.Dishes, a => (a.FirstName + " " + a.LastName),
         b => b.PersonName, (a, b) => new { a, b }).SelectMany(a => a.b.DefaultIfEmpty(), (x, c) => new { x.a, c.DishName }).ToList();
     var temp = Model.partyDb.Dishes.ToList();
     var gotList = new List<QLHOLIDAYPARTY.Models.GoT>();
     gotList = Model.CharacterList();
+    bool flag = false;
 }
 <h2> Dishes</h2>
 @using (Html.BeginForm())
@@ -16,8 +17,8 @@
             <th>#</th>
             <th>FirstName</th>
             <th>LastName</th>
-            <th>Attendence Day</th>
-            <th>EmalAddress</th>
+            <th>Attendance Date</th>
+            <th>Email Address</th>
             <th>Character:</th>
             <th>Guest</th>
             <th>Dish?</th>
@@ -33,19 +34,23 @@
                 <td>@v.a.EmailAddress</td>
                 @if (@v.a.GoTCharacter == null && v.a.EmailAddress == User.Identity.Name)
                 {
+                    
+                    {
+                        flag = true;
+                    }
                     <td>
-                        <select required="required" class="form-control" id="name" name="name">
+                        <select required="required" class="form-control" id="url" name="url">
                             <option>Select Character</option>
                             @foreach (var v1 in gotList)
                             {
-                                <option>@v1.name</option>
+                                <option value="@v1.url">@v1.name</option>
                             }
                         </select>
                     </td>
                 }
                 else
                 {
-                    <td>@v.a.GoTCharacter <a href="/GoT/info?url=@v.a.GoTCharacter">| Details</a></td>
+                    <td>@v.a.GoTCharacter <a href="/GoT/info?url=@v.a.url">| Details</a></td>
                 }
                 <td>@v.a.Guest1</td>
                 @if (User.Identity.Name == v.a.EmailAddress)
@@ -61,5 +66,12 @@
             </tr>
         }
     </table>
-    <input type="submit" onclick="GOTcheck();" />
+    if(flag)
+     {
+         <input class="btn btn-primary" type="submit" onclick="GOTcheck();"/>
+    }
+    else
+    {
+        <input class="btn btn-success" type="submit" value="Change" onclick="GOTcheck();"/>
+    }
 }

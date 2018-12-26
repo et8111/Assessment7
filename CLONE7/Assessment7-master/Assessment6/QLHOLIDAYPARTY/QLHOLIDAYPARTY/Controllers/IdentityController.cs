@@ -26,6 +26,7 @@ namespace QLHOLIDAYPARTY.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.g.url = "EMPTY";
                 var userManager = HttpContext.GetOwinContext().Get<UserManager<RegisterModel>>();
                 var id = UserManager.Create(new RegisterModel(model.g.EmailAddress), model.Password);
                 if (id.Succeeded)

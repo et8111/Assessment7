@@ -15,8 +15,6 @@ namespace QLHOLIDAYPARTY.Controllers
             List<GoT> gotList = new List<GoT>();
             GoT g = new GoT();
             gotList = g.CharacterList();
-           
-            
             return View(gotList);
         }
 
@@ -25,7 +23,7 @@ namespace QLHOLIDAYPARTY.Controllers
             List<GoT> list = new List<GoT>();
             GoT g = new GoT();
             list = g.CharacterList();
-            g = list.FirstOrDefault(a => a.name == url);
+            g = list.FirstOrDefault(a => a.url == url);
             return View(g);
         }
     }

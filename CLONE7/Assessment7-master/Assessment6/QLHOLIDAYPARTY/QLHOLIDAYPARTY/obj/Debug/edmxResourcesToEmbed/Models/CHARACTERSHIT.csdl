@@ -47,5 +47,6 @@
     <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Guest1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="GoTCharacter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="url" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>
