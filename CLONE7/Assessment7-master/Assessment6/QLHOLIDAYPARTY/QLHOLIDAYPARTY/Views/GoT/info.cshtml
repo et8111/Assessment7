@@ -25,6 +25,12 @@
         <dd>
             @Html.DisplayFor(model => model.name)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(m => m.titles)
+        </dt>
+        <dd>
+            @Html.DisplayFor(m => m.titles)
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.gender)
@@ -57,13 +63,45 @@
         <dd>
             @Html.DisplayFor(model => model.died)
         </dd>
-
+        <dt>
+            @Html.DisplayNameFor(m => m.culture)
+        </dt>
+        <dd>
+            @Html.DisplayFor(m => m.culture)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(m => m.aliases)
+        </dt>
+        <dd>
+            @Html.DisplayFor(m => m.aliases)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(m => m.books)
+        </dt>
+        <dd>
+            @Html.DisplayFor(m => m.books)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(m => m.playedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(m => m.playedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(m => m.tvSeries)
+        </dt>
+        <dd>
+            @Html.DisplayFor(m => m.tvSeries)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.father)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.father)
+            @if (Model.father != null)
+            {
+                <a href="/GoT/info?url=@Model.father">@Model.father</a>
+            }
         </dd>
 
         <dt>
@@ -71,7 +109,10 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.mother)
+            @if (Model.mother != null)
+            {
+                <a href="/GoT/info?url=@Model.mother">@Model.mother</a>
+            }
         </dd>
 
         <dt>
@@ -79,7 +120,10 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.spouse)
+            @if (Model.spouse != null)
+            {
+                <a href="/GoT/info?url=@Model.spouse">@Model.spouse</a>
+            }
         </dd>
 
     </dl>
